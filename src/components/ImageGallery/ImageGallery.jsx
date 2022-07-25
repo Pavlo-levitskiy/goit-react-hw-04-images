@@ -29,5 +29,5 @@ ImageGallery.propTypes = {
       tags: PropTypes.string.isRequired,
     })
   ),
-  toggleLargeMode: PropTypes.func.isRequired,
+  toggleLargeMode: PropTypes.func,
 };

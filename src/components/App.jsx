@@ -21,7 +21,8 @@ export const App = () => {
       return;
     }
     async function getImages() {
-      try{
+      try {
+        setIsLoading(true);
         const foundImages = await fetchImages(query, page);
         const imageMapper = imgList => {
           return imgList.map(({ id, webformatURL, largeImageURL, tags }) => {
@@ -56,16 +57,17 @@ export const App = () => {
       <AppStyled>
         <SearchBar onSubmit={onChangeQuery} />
         <ToastContainer autoClose={3000} />
-        {isLoading ? <Loader /> : null}
+        {isLoading && <Loader />}
         {images.length > 0 && (
           <ImageGallery
             images={images}
-            toggleLargeMode={toggleLargeMode}
+            toggleLargeMode = {toggleLargeMode}
             />
         )}
+
         {images.length > 0 && !isLoading && <Button onClick={loadMore} />}
         {largeImg && (
-        <Modal largeImg={largeImg.url} alt={query} onClose={toggleLargeMode} />
+        <Modal largeImg={largeImg} alt={query} onClose={toggleLargeMode} />
       )}
       </AppStyled>
     );

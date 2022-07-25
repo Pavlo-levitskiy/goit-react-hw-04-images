@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 export const ImageGalleryItem = ({ url, preview, alt, toggleLargeMode }) => {
   return (
     <GalleryItem
-      onClick={() => {
-        toggleLargeMode({ url, alt });
-      }}
-    >
+      onClick={() => 
+        toggleLargeMode( url )}>
       <img alt={alt} src={preview} />
     </GalleryItem>
   );
@@ -16,7 +14,7 @@ export const ImageGalleryItem = ({ url, preview, alt, toggleLargeMode }) => {
 ImageGalleryItem.propTypes = {
   url: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  toggleLargeMode: PropTypes.func.isRequired,
+  alt: PropTypes.string,
+  toggleLargeMode: PropTypes.func,
 };
 
